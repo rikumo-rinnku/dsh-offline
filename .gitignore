@@ -1,0 +1,49 @@
+# ====== DeepSeek Harness Offline Pack - .gitignore ======
+# We commit ONLY our own source code (scripts, launcher, build config).
+# The pre-built engine + Node/Python runtimes are distributed via the
+# offline .7z archive, not via git.
+
+# --- Large prebuilt runtime artifacts (distributed via 7z) ---
+/runtime/node/
+/runtime/python/
+/dsh-core/
+
+# --- Runtime logs, caches, user data (portable directories) ---
+/logs/
+/.dsh-home/
+/.cache/
+/*.log
+/npm-cache/
+/pnpm-store/
+
+# --- Python bytecode & virtualenvs ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+env/
+
+# --- Editor / IDE ---
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# --- Temp files created by smoke tests / packaging scripts ---
+/_smoke_*.py
+/_debug_*.py
+/_test_*.py
+/pack-tmp/
+/dsh-offline.7z*
+/dsh-offline-portable.*
+*.zip
+# --- Abandoned / discarded source trees (never tracked or shipped) ---
+/dsh-core.trash/
+
+# --- OS junk ---
+Thumbs.db
+Desktop.ini
+.DS_Store
