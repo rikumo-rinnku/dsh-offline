@@ -39,6 +39,7 @@ env/
 /pack-tmp/
 /dsh-offline.7z*
 /dsh-offline-portable.*
+/release-output/
 *.zip
 # --- Abandoned / discarded source trees (never tracked or shipped) ---
 /dsh-core.trash/

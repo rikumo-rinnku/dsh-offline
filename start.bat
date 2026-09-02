@@ -2,7 +2,7 @@
 setlocal EnableExtensions DisableDelayedExpansion
 
 rem ============================================================
-rem  DeepSeek Harness Offline Launcher - Entry Script
+rem  DeepSeek Harness Portable Launcher - Entry Script
 rem  All output in ASCII to avoid encoding issues on double-click
 rem ============================================================
 
@@ -59,6 +59,14 @@ if not defined TCL_LIBRARY (
 set "DSH_APP_ROOT=%APP_ROOT%"
 set "DSH_LOG_DIR=%APP_ROOT%logs"
 if not exist "%DSH_LOG_DIR%" mkdir "%DSH_LOG_DIR%" 2>nul
+
+rem Restore portable dependency links before starting the GUI.
+"%PYTHON_EXE%" "%APP_ROOT%launcher\restore_links.py"
+if errorlevel 1 (
+    echo [ERROR] Dependency setup failed. Extract the complete ZIP to a local NTFS drive.
+    pause
+    exit /b 1
+)
 
 rem ----- 5. Launch the GUI via pythonw (no black console window) -----
 start "DSH Launcher" "%PYTHONW_EXE%" "%LAUNCHER_PY%"
